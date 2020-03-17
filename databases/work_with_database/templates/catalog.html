@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="header">
+            <h1><a href="/catalog">Каталог</a></h1>
+
+        </div>
+
+        <div class="sort-block">
+            {# Здесь должен быть раздел с сортировкой #}
+        </div>
+
+        <div class="content">
+            <table class="u-full-width">
+              <thead>
+                <tr>
+                  <th><a href="?sort=id">id</th>
+                  <th><a href="?sort=name">Название</th>
+                  <th><a href="?sort=price">Цена</th>
+                  <th><a href="?sort=release_date">Дата выпуска</th>
+                  <th><a href="?sort=lte_exists">ЛТЕ</th>
+                </tr>
+
+              </thead>
+              <tbody>
+                  {% for phone in phones_list %}
+                    <tr>
+                      <td  width=100 align=center><a href="/catalog/{{phone.slug}}/">{{ phone.id }}</td>
+                      <td  width=100 align=center><a href="/catalog/{{phone.slug}}/">{{ phone.name }}</td>
+                      <td  width=100 align=center><a href="/catalog/{{phone.slug}}/">{{ phone.price }} рублей</td>
+                      <td  width=150 align=center><a href="/catalog/{{phone.slug}}/">{{ phone.release_date }}</td>
+                      <td  width=100 align=center><a href="/catalog/{{phone.slug}}/">{{ phone.lte_exists }}</td>
+                      <td  width=200 align=center><a href="/catalog/{{phone.slug}}/"><img src={{ phone.image }} width=100</td>
+                    </tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
