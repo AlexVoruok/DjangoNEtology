@@ -16,6 +16,4 @@ def show_product(request, slug):
 
     models = Phone.objects.filter(slug=slug)
 
-    context = {'models': models,
-               }
-    return render(request, template, context)
+    return render(request, template, context={'models': models})
